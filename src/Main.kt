@@ -49,6 +49,26 @@ fun checkPassword(text: String, dataUser: Profile?): Boolean{
     print(text)
     val password = readln()
     return password.equals(dataUser?.getSetPassword, false)
+}
+fun checkFilterList(text: String, list: MutableList<String>): Boolean{
+
+    while (true){
+        for ((index, value) in list.withIndex()){
+            println("${index + 1}. $value")
+        }
+    print("pilih ${text.lowercase()}: ")
+    val input = readln().lowercase()
+
+        if (list.any {it == input}){
+            println("Gacor")
+            return true
+
+        }
+        else{
+            println("Tidak ada! Coba cari lagi!")
+            continue
+        }
+    }
 
 }
 
