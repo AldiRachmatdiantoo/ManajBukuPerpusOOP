@@ -3,12 +3,13 @@ class Menu(private var dataUser: Profile?) {
     val listMenu = mutableListOf(
         "profil",
         "keluar",
-        "cari buku"
+        "cari buku",
+        "tambah buku"
     )
     val buku = Buku()
     fun toMenu() {
         while (true) {
-            print("\n=====MENU=====\n1.PROFIL\n2.CARI BUKU\n3.TAMBAH BUKU\n4.KEMBALIKAN BUKU\n5.PINJAM BUKU\n6.KELUAR\n7.BUKU SAYA\nPilih: ")
+            print("\n=====MENU=====\n1.PROFIL\n2.CARI BUKU\n3.TAMBAH BUKU\n4.HAPUS BUKU\n5.KELUAR\nPilih: ")
             val chooseMenu = readln().lowercase()
 
             if (listMenu.any {it == chooseMenu}){
@@ -17,7 +18,7 @@ class Menu(private var dataUser: Profile?) {
                     println("Anda Memilih $i\n")
                 }
                 when(chooseMenu){
-                    "profil" -> {
+                    "profil"  -> {
                         val passwordCheck = checkPassword("Password: ", dataUser)
                         if (!passwordCheck){
                             println("\nPASSWORD SALAH!\nKembali ke Menu..")
@@ -31,7 +32,13 @@ class Menu(private var dataUser: Profile?) {
                         break
                     }
                     "cari buku" -> {
-                        buku.searchBuku(dataUser)
+                        buku.searchBuku()
+                    }
+                    "tambah buku" -> {
+                        buku.tambahBuku()
+                    }
+                    "hapus buku" ->{
+                        buku.hapusBuku()
                     }
                     else -> break
                 }

@@ -40,7 +40,6 @@ fun checkNullOrBlank(text: String): String {
         print("$text: ")
         input = readln()
     }
-    println("BERHASIL!!")
     return input
 
 }
@@ -57,7 +56,7 @@ fun checkFilterList(header: String, text: String, list: MutableList<String>): St
         for ((index, value) in list.withIndex()){
             println("${index + 1}. $value")
         }
-    print("pilih ${text.lowercase()}: ")
+    print("Ketik ${text.lowercase()}: ")
     val input = readln().lowercase()
 
         if (list.any {it == input}){
