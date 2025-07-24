@@ -4,7 +4,8 @@ class Menu(private var dataUser: Profile?) {
         "profil",
         "keluar",
         "cari buku",
-        "tambah buku"
+        "tambah buku",
+        "hapus buku"
     )
     val buku = Buku()
     fun toMenu() {

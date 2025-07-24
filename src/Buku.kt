@@ -1,7 +1,7 @@
 class Buku {
 
-    val bukuClassicName = mutableListOf("The Stranger", "Notes From the Underground")
-    val bukuRomanceName = mutableListOf("The Notebook", "La La Land", "Five Feet Apart")
+    val bukuClassicName = mutableListOf("the stranger", "notes from the underground")
+    val bukuRomanceName = mutableListOf("the notebook", "la la land", "five Feet apart")
     val genre = mutableListOf("classic", "romance")
 
     fun searchBuku() {
@@ -43,7 +43,35 @@ class Buku {
     }
 
     fun hapusBuku(){
-        searchBuku()
+        val deleteBook = checkFilterList("HAPUS BUKU", "GENRE", genre)
+        println("ANDA MEMILIH ${deleteBook.uppercase()}")
+        when(deleteBook){
+            "classic" -> {
+                val genreType = "CLASSIC"
+                inputHapusBuku(genreType, bukuClassicName)
+            }
+            "romance" -> {
+                val genreType = "ROMANCE"
+                inputHapusBuku(genreType, bukuRomanceName)
+            }
+        }
+
+    }
+    fun inputHapusBuku(genryType: String, list: MutableList<String>){
+        while (true){
+            val deleteBook = checkFilterList(genryType, "BUKU YANG INGIN DIHAPUS", list)
+            val checkDeleteBook = checkYesOrNo("Ingin Menghapus $deleteBook? ")
+            if (!checkDeleteBook){
+                continue
+            } else {
+                println("BERHASIL MENGHAPUS ${deleteBook.uppercase()}!")
+                list.remove(deleteBook)
+                print("Ketik apapun untuk kembali: ")
+                readln()
+                break
+
+            }
+        }
     }
     fun inputTambahBuku(list: MutableList<String>){
 
